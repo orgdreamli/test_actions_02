@@ -1,0 +1,54 @@
+name: Caching Test
+
+on: push
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+
+    - name: Enable Cache
+      id: cache-action
+      uses: actions/cache@v2
+      with:
+        path: cache-folder
+        key: ${{ runner.os }}-${{ hashFiles('cache-folder/hello') }} 
+
+    - name: Use or generate the cache
+      if: ${{ steps.cache-action.outputs.cache-hit != 'true' }}
+      run: echo 3 > cache-folder/hello 
+
+    - name: Verify we have our cached file 
+      run: |
+        echo `pwd` 
+        cat cache-folder/hello 
+
+  # use:
+  #   runs-on: self-hosted
+  #   steps:
+  #   - name: Enable Cache
+  #     id: cache-action
+  #     uses: actions/cache@v2
+  #     with:
+  #       path: cache-folder  
+  #       key: ${{ runner.os }}-${{ hashFiles('cache-folder/cache_me') }}
+
+  #   # - name: my action step
+  #   #   id: my
+  #   #   uses: musset0/my-action@v1.1.2
+  #   #   with: 
+  #   #     who-to-greet: 'musset_main' 
+        
+  #   - shell: bash
+  #     if: ${{ steps.cache-action.outputs.cache-hit == 'true' }}
+  #     run: |
+  #         cat cache-folder/cache_me
+          
+  #   - name: Verify we have our cached file
+  #     run: |
+  #       echo `pwd` 
+  #       cat cache-folder/cache_me
+  
+
+      
