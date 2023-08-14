@@ -36,7 +36,7 @@ jobs:
 
     - name: my action step
       id: my
-      uses: musset0/my-action@v1.1.2
+      uses: musset0/my-action@v1.1.2 
       with: 
         who-to-greet: 'musset_main' 
         
