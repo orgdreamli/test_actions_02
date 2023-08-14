@@ -15,9 +15,9 @@ jobs:
         path: cache-folder
         key: ${{ runner.os }}-${{ hashFiles('cache-folder/hello') }} 
 
-    - name: Use or generate the cache
-      if: ${{ steps.cache-action.outputs.cache-hit != 'true' }}
-      run: echo 3 > cache-folder/hello 
+    # - name: Use or generate the cache
+    #   if: ${{ steps.cache-action.outputs.cache-hit != 'true' }}
+    #   run: echo 3 > cache-folder/hello 
 
     - name: Verify we have our cached file 
       run: |
