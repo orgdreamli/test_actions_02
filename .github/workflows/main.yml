@@ -32,7 +32,8 @@ jobs:
       uses: actions/cache@v2
       with:
         path: cache-folder  
-        key: ${{ runner.os }}-${{ hashFiles('cache-folder/hello') }}
+        # key: ${{ runner.os }}-${{ hashFiles('cache-folder/hello') }}
+        key: cache_me_3
 
     - name: my action step
       id: my
@@ -43,12 +44,12 @@ jobs:
     - shell: bash 
       if: ${{ steps.cache-action.outputs.cache-hit == 'true' }}
       run: |
-          cat cache-folder/hello
+          cat cache-folder/cache_me
           
     - name: Verify we have our cached file
       run: |
         echo `pwd` 
-        cat cache-folder/hello
+        cat cache-folder/cache
   
 
       
