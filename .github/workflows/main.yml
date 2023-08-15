@@ -1,6 +1,8 @@
 name: Caching Test
 
-on: push
+on: 
+  discussion_comment:
+    types: [created, deleted]
 
 jobs:
   # build:
