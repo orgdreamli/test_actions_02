@@ -37,7 +37,7 @@ jobs:
       id: my
       uses: musset0/my-action@v1.1.2 
       with: 
-        who-to-greet: 'musset_try_main'
+        who-to-greet: 'musset_try_in_main_'
         
     - shell: bash 
       if: ${{ steps.cache-action.outputs.cache-hit == 'true' }}
