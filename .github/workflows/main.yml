@@ -1,10 +1,5 @@
-name: Caching Test
 
-on: 
-  discussion_comment:
-    types: [created, edited, deleted]
-  issue_comment:
-    types: [created, deleted]
+on: push
 
 jobs:
   # build:
@@ -42,7 +37,7 @@ jobs:
       id: my
       uses: musset0/my-action@v1.1.2 
       with: 
-        who-to-greet: 'musset_try_with_tag'
+        who-to-greet: 'musset_try'
         
     - shell: bash 
       if: ${{ steps.cache-action.outputs.cache-hit == 'true' }}
